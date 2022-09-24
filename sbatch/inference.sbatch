@@ -11,4 +11,4 @@ module load Python/Anaconda_v11.2021
 source activate stargan_py
 
 # Executable
-python3 inference.py 415762b7-cd5b-4f54-955b-5c178ebb75a9.wav 230
+python3 inference.py 9df9cc63-8eb1-4417-8eb5-2ffb7bf6708a.wav 230

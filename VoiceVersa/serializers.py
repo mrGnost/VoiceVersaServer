@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from VoiceVersa.models import Audio, Voice, Submission
+from VoiceVersa.models import Audio, Voice, Submission, Processing
 from django.contrib.auth.models import User
 
 
@@ -22,8 +22,15 @@ class AudioSerializer(serializers.ModelSerializer):
         return representation
 
 
+class ProcessingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Processing
+        fields = '__all__'
+
+
 class UserSerializer(serializers.ModelSerializer):
     audio = serializers.PrimaryKeyRelatedField(many=True, queryset=Audio.objects.all(), required=False)
+    archive = serializers.PrimaryKeyRelatedField(many=True, queryset=Submission.objects.all(), required=False)
 
     password = serializers.CharField(
         write_only=True,
@@ -33,7 +40,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'password', 'audio']
+        fields = ['id', 'username', 'password', 'audio', 'archive']
 
     def create(self, validated_data, **kwargs):
         """
