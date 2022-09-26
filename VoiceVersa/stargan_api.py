@@ -4,8 +4,8 @@ from paramiko import Transport, SFTPClient, SSHClient, AutoAddPolicy
 
 host = "cluster.hpc.hse.ru"
 port = 2222
-user = "damenschikov"
-password = "Ahd6fohm"
+user = "<логин>"
+password = "<пароль>"
 
 
 def process_audio(audio, voice):
